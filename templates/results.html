@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block main %}
+
+<h3>Search Results</h3>
+<div class="dropdown-divider"></div>
+
+<div class="container results-container">
+    
+    {% for movie in movies %}
+        <div class="card border-primary mb-3" style="width: 12rem">
+            <div class="card-body">
+                <h4 class="card-title">{{movie[0]}}</h4>
+                <h6 class="card-text">{{movie[4]}}</h6>
+                <h6 class="card-text">{{movie[7]}}</h6>
+            </div>
+            <div class="card-footer">
+                <a href="/movie/{{movie[1]}}" class="card-link">Go to movie page</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

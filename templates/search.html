@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <h3>Search for a movie!</h3>
+    <form action="/search" method="GET">
+        <div class="form-group">
+            <input type="text" class="form-control" name="movie" autofocus aria-describedby="movieHelp" placeholder="Moviename">
+            <small id="movieHelp" class="form-text text-muted">Star Wars</small>
+        </div>
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+{% endblock %}

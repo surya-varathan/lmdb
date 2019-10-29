@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Cast
+{% endblock %}
+{% block main %}
+
+    <body>
+        <p>Name: {{cast_details[0]}}</p>
+        <p> Movies: </p>
+        {% for movie_details in movie_list %}
+            <p><a href=" {{ '/movie/%s'%movie_details[1]  }}"> {{movie_details[0]}}</p></a>
+        {% endfor %}
+    </body>
+{% endblock %}

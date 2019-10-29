@@ -1,0 +1,65 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Movie
+{% endblock %}
+
+{% block main %}
+    <body>
+        <p>Movie Name: {{movie_details[0]}}</p>
+        <p>Date Released: {{movie_details[4]}}</p>
+        <p>Summary: {{movie_details[7]}}</p>
+    </body>
+    <p>Director</p>
+    <p><a href=" {{ '/director/%s'%director[1]  }}"> {{director[0]}} </a> </p>
+    <p> Cast: </p>
+    {% for cast_details in cast_list %}
+        <p><a href=" {{ '/cast/%s'%cast_details[1]  }}"> {{cast_details[0]}} </a> as {{cast_details[2]}} </p>
+    {% endfor %}
+
+    <div>
+        <!-- REVIEW FORM -->
+        <form method="POST" class="form-border">
+            <div class="form-row">
+                <div class="form-group col-sm">
+                    <label for="rating">Rate this movie</label>
+                    <select id="rating" name="rating" class="form-control" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option selected value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-8">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Say something</span>
+                        </div>
+                        <textarea name="comment" id="comment" class="form-control" rows="2" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group col-sm">
+                    <button class="btn btn-success" type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+        <div id="userReviews">
+            <h2></h2>
+            {% for review in reviews %}
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h6 class="mb-1" style="color:burlywood">{{review[0]}} said...</h6>
+                    </div>
+                    <p class="mb-1">{{review[1]}}</p>
+                    <small>Rated: {{review[2]}}</small>
+                </a>
+                <div class="dropdown-divider"></div>
+            </div>
+            {% endfor %}
+        </div>
+        
+
+{% endblock %}
